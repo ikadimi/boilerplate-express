@@ -1,5 +1,6 @@
 let express = require('express');
 let app = express();
+require('dotenv').config()
 
 app.use("/public", express.static("public"))
 
@@ -9,7 +10,8 @@ app.get('/', (req, res) => {
 
 
 app.get('/json', (req, res) => {
-    res.json({"message": "Hello json"})
+    res.json({message: 
+        process.env.MESSAGE_STYLE === "uppercase" ? "HELLO JSON" : "Hello json"})
 })
 
 
